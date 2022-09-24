@@ -1,4 +1,5 @@
 import { TextInput, View, Text, StyleSheet } from "react-native";
+import { colors, px } from "../../theme";
 
 export const Input = ({
   label,
@@ -26,20 +27,20 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "flex-start",
-    width: 358,
-    height: 56,
-    borderColor: "#7785DB",
-    borderWidth: 2,
+    width: px(358),
+    height: px(56),
+    borderColor: colors.primary,
+    borderWidth: px(2),
     borderStyle: "solid",
-    borderRadius: 8,
-    padding: 6,
+    borderRadius: px(8),
+    padding: px(6),
   },
   label: {
-    fontSize: 12,
+    fontSize: px(12),
     fontWeight: "600",
   },
   textInput: {
-    fontSize: 16,
-    marginTop: 4,
+    fontSize: px(16),
+    marginTop: px(4),
   },
 });

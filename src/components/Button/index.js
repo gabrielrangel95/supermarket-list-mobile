@@ -1,12 +1,13 @@
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { colors, px } from "../../theme";
 
-export const Button = ({ text, marginTop, onClick }) => {
+export const Button = ({ children, marginTop, onClick }) => {
   return (
     <TouchableOpacity
       onPress={onClick}
       style={{ ...styles.buttonContainer, marginTop: marginTop || 0 }}
     >
-      <Text style={styles.buttonText}>{text}</Text>
+      <Text style={styles.buttonText}>{children}</Text>
     </TouchableOpacity>
   );
 };
@@ -16,14 +17,14 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    width: 358,
-    height: 56,
-    borderRadius: 24,
-    backgroundColor: "#7785DB",
+    width: px(358),
+    height: px(56),
+    borderRadius: px(24),
+    backgroundColor: colors.primary,
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: px(16),
     fontWeight: "bold",
-    color: "#ffffff",
+    color: colors.white,
   },
 });
