@@ -10,14 +10,16 @@ import {
 import { USERNAME_DB_KEY } from "../../services/constants";
 import { getData } from "../../services/db";
 import { colors, px } from "../../theme";
-import { ListCard, Button } from "../../components";
+import { ListCard, Button, Loader } from "../../components";
 import { getItems } from "../../services/api/requests";
 
-export const MarketListScreen = () => {
+export const MarketListScreen = ({ navigation }) => {
+  const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
   const [marketList, setMarketList] = useState([]);
 
   const getUsernameList = async () => {
+    setLoading(true);
     const result = await getData(USERNAME_DB_KEY);
     if (result?.error) {
       Alert.alert("Falha ao retornar username");
@@ -30,6 +32,11 @@ export const MarketListScreen = () => {
       return;
     }
     setMarketList(list);
+    setLoading(false);
+  };
+
+  const onClickChangeUsername = () => {
+    navigation.goBack();
   };
 
   useEffect(() => {
@@ -42,10 +49,28 @@ export const MarketListScreen = () => {
         <Text style={styles.title}>Olá, {username}!</Text>
         <Text style={styles.description}>Sua lista de compras:</Text>
       </View>
+      {loading && <Loader />}
       <FlatList
         data={marketList}
         renderItem={({ item }) => <ListCard {...item} />}
         keyExtractor={(item) => item._id}
+        ListEmptyComponent={() => (
+          <View style={styles.emptyContainer}>
+            <Text style={styles.emptyTitle}>Sua lista está vazia.</Text>
+            <Text style={styles.emptyDescription}>
+              Clique no botão abaixo para adicionar um novo item ou altere o seu
+              username.
+            </Text>
+            <Button
+              onClick={onClickChangeUsername}
+              marginTop={24}
+              size="small"
+              variant="outline"
+            >
+              Alterar username
+            </Button>
+          </View>
+        )}
       />
       <View style={styles.buttonView}>
         <Button>Adicionar novo item</Button>
@@ -83,5 +108,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     position: "absolute",
     bottom: px(64),
+  },
+  emptyContainer: {
+    height: px(400),
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  emptyTitle: {
+    fontSize: px(18),
+    fontWeight: "500",
+    marginBottom: px(8),
+  },
+  emptyDescription: {
+    textAlign: "center",
   },
 });
