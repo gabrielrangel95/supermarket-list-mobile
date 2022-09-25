@@ -10,10 +10,12 @@ import {
 import { USERNAME_DB_KEY } from "../../services/constants";
 import { getData } from "../../services/db";
 import { colors, px } from "../../theme";
-import { ListCard, Button, Loader } from "../../components";
+import { ListCard, Button, Loader, FormModal } from "../../components";
 import { getItems } from "../../services/api/requests";
 
 export const MarketListScreen = ({ navigation }) => {
+  const [selectedItem, setSelectItem] = useState();
+  const [modalVisible, setModalVisible] = useState(false);
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
   const [marketList, setMarketList] = useState([]);
@@ -40,8 +42,20 @@ export const MarketListScreen = ({ navigation }) => {
   };
 
   useEffect(() => {
-    getUsernameList();
-  }, []);
+    if (modalVisible === false) {
+      getUsernameList();
+    }
+  }, [modalVisible]);
+
+  const onClickItem = (item) => {
+    setSelectItem(item);
+    setModalVisible(true);
+  };
+
+  const onCloseModal = async () => {
+    setSelectItem(null);
+    setModalVisible(false);
+  };
 
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
@@ -51,30 +65,43 @@ export const MarketListScreen = ({ navigation }) => {
       </View>
       {loading && <Loader />}
       <FlatList
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.flatListContentContainer}
         data={marketList}
-        renderItem={({ item }) => <ListCard {...item} />}
-        keyExtractor={(item) => item._id}
-        ListEmptyComponent={() => (
-          <View style={styles.emptyContainer}>
-            <Text style={styles.emptyTitle}>Sua lista está vazia.</Text>
-            <Text style={styles.emptyDescription}>
-              Clique no botão abaixo para adicionar um novo item ou altere o seu
-              username.
-            </Text>
-            <Button
-              onClick={onClickChangeUsername}
-              marginTop={24}
-              size="small"
-              variant="outline"
-            >
-              Alterar username
-            </Button>
-          </View>
+        renderItem={({ item }) => (
+          <ListCard onClickItem={() => onClickItem(item)} {...item} />
         )}
+        keyExtractor={(item) => item._id}
+        ListEmptyComponent={() =>
+          !loading && (
+            <View style={styles.emptyContainer}>
+              <Text style={styles.emptyTitle}>Sua lista está vazia.</Text>
+              <Text style={styles.emptyDescription}>
+                Clique no botão abaixo para adicionar um novo item ou altere o
+                seu username.
+              </Text>
+              <Button
+                onClick={onClickChangeUsername}
+                marginTop={24}
+                size="small"
+                variant="outline"
+              >
+                Alterar username
+              </Button>
+            </View>
+          )
+        }
       />
       <View style={styles.buttonView}>
-        <Button>Adicionar novo item</Button>
+        <Button onClick={() => setModalVisible(true)}>
+          Adicionar novo item
+        </Button>
       </View>
+      <FormModal
+        visible={modalVisible}
+        selectedItem={selectedItem}
+        onClose={onCloseModal}
+      />
     </SafeAreaView>
   );
 };
@@ -123,5 +150,8 @@ const styles = StyleSheet.create({
   },
   emptyDescription: {
     textAlign: "center",
+  },
+  flatListContentContainer: {
+    paddingBottom: px(100),
   },
 });
