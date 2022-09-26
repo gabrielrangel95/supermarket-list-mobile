@@ -1,30 +1,30 @@
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
-import { EvilIcons } from "@expo/vector-icons";
-import { colors, px } from "~/theme";
+import { TouchableOpacity, Text, StyleSheet } from 'react-native'
+import { EvilIcons } from '@expo/vector-icons'
+import { colors, px } from '~/theme'
 
-const handleVariant = (variant) => {
-  if (variant === "outline") {
+const handleVariant = variant => {
+  if (variant === 'outline') {
     return {
       backgroundColor: colors.light,
       borderColor: colors.primary,
       textColor: colors.primary,
-    };
+    }
   }
 
-  if (variant === "ghost") {
+  if (variant === 'ghost') {
     return {
-      backgroundColor: "transparent",
-      borderColor: "transparent",
+      backgroundColor: 'transparent',
+      borderColor: 'transparent',
       textColor: colors.primary,
-    };
+    }
   }
 
   return {
     backgroundColor: colors.primary,
     borderColor: colors.primary,
     textColor: colors.white,
-  };
-};
+  }
+}
 
 export const Button = ({
   children,
@@ -42,7 +42,7 @@ export const Button = ({
         marginTop: marginTop || 0,
         backgroundColor: handleVariant(variant).backgroundColor,
         borderColor: handleVariant(variant).borderColor,
-        width: size === "small" ? px(200) : px(358),
+        width: size === 'small' ? px(200) : px(358),
       }}
     >
       {icon && (
@@ -61,15 +61,15 @@ export const Button = ({
         {children}
       </Text>
     </TouchableOpacity>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     width: px(358),
     height: px(56),
     borderRadius: px(24),
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: px(16),
-    fontWeight: "bold",
+    fontWeight: 'bold',
     color: colors.white,
   },
-});
+})

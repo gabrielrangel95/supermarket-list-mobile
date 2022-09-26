@@ -1,5 +1,5 @@
-import { TextInput, View, Text, StyleSheet } from "react-native";
-import { colors, px } from "~/theme";
+import { TextInput, View, Text, StyleSheet } from 'react-native'
+import { colors, px } from '~/theme'
 
 export const Input = ({
   label,
@@ -19,28 +19,28 @@ export const Input = ({
         {...props}
       />
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   inputContainer: {
-    display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
     width: px(358),
     height: px(56),
     borderColor: colors.primary,
     borderWidth: px(2),
-    borderStyle: "solid",
+    borderStyle: 'solid',
     borderRadius: px(8),
     padding: px(6),
   },
   label: {
     fontSize: px(12),
-    fontWeight: "600",
+    fontWeight: '600',
   },
   textInput: {
     fontSize: px(16),
     marginTop: px(4),
   },
-});
+})

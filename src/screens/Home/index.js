@@ -1,28 +1,28 @@
-import { useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, Image, Text, Alert } from "react-native";
-import { Button, Input } from "~/components";
-import { USERNAME_DB_KEY, saveData } from "~/services";
-import { px } from "~/theme";
-import homeImage from "../../../assets/shopping-bag.png";
+import { useState } from 'react'
+import { StatusBar } from 'expo-status-bar'
+import { StyleSheet, View, Image, Text, Alert } from 'react-native'
+import { Button, Input } from '~/components'
+import { USERNAME_DB_KEY, saveData } from '~/services'
+import { px } from '~/theme'
+import homeImage from '../../../assets/shopping-bag.png'
 
 export const HomeScreen = ({ navigation }) => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('')
 
   const onClickContinue = async () => {
     if (username.length <= 3) {
-      Alert.alert("Username deve conter mais do que 3 caracteres");
-      return;
+      Alert.alert('Username deve conter mais do que 3 caracteres')
+      return
     }
     // salvar o username
-    const result = await saveData(USERNAME_DB_KEY, username);
+    const result = await saveData(USERNAME_DB_KEY, username)
     if (result?.error) {
-      Alert.alert("Erro ao salver username");
+      Alert.alert('Erro ao salver username')
     }
 
     // navegar para proxima pagina
-    navigation.navigate("MarketList");
-  };
+    navigation.navigate('MarketList')
+  }
 
   return (
     <View style={styles.container}>
@@ -48,15 +48,15 @@ export const HomeScreen = ({ navigation }) => {
       </Button>
       <StatusBar style="auto" />
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: px(16),
   },
   homeImage: {
@@ -65,19 +65,19 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: px(24),
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
     marginTop: px(16),
   },
   subtitle: {
     fontSize: px(16),
-    textAlign: "center",
+    textAlign: 'center',
     marginTop: px(12),
   },
   description: {
     fontSize: px(16),
-    textAlign: "left",
+    textAlign: 'left',
     marginTop: px(36),
     marginBottom: px(14),
   },
-});
+})

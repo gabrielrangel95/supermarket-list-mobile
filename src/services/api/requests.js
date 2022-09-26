@@ -1,64 +1,64 @@
-import { api, returnUsername } from "./config";
+import { api, returnUsername } from './config'
 
 export const getItems = async () => {
   try {
-    const username = await returnUsername();
+    const username = await returnUsername()
 
-    const result = await api.get("list-items", {
+    const result = await api.get('list-items', {
       headers: {
         username,
       },
-    });
-    return result.data;
+    })
+    return result.data
   } catch (error) {
-    return { error };
+    return { error }
   }
-};
+}
 
-export const addItem = async (body) => {
+export const addItem = async body => {
   try {
-    const username = await returnUsername();
+    const username = await returnUsername()
 
-    const result = await api.post("/list-item", body, {
+    const result = await api.post('/list-item', body, {
       headers: {
         username,
       },
-    });
+    })
 
-    return result.data;
+    return result.data
   } catch (error) {
-    return { error };
+    return { error }
   }
-};
+}
 
 export const updateItem = async (id, body) => {
   try {
-    const username = await returnUsername();
+    const username = await returnUsername()
 
     const result = await api.put(`/list-item/${id}`, body, {
       headers: {
         username,
       },
-    });
+    })
 
-    return result.data;
+    return result.data
   } catch (error) {
-    return { error };
+    return { error }
   }
-};
+}
 
-export const deleteItem = async (id) => {
+export const deleteItem = async id => {
   try {
-    const username = await returnUsername();
+    const username = await returnUsername()
 
     const result = await api.delete(`/list-item/${id}`, {
       headers: {
         username,
       },
-    });
+    })
 
-    return result.data;
+    return result.data
   } catch (error) {
-    return { error };
+    return { error }
   }
-};
+}
