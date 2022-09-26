@@ -1,5 +1,9 @@
 # Supermarket List App
 
+<p>
+ <img height="500" src="https://github.com/gabrielrangel95/supermarket-list-mobile/blob/main/assets/demo.gif" alt="supermarket-list-app-demo">
+</p>
+
 This is an mobile app created with React Native (Expo) with the main goal of help the users to manage supermarket lists.
 
 At the app the user can Create, Delete, Update and List all the supermarket list items, and if they ared "Checked" or not.
