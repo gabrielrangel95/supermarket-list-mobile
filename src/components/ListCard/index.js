@@ -2,7 +2,13 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { px, colors } from "../../theme";
 import { Feather } from "@expo/vector-icons";
 
-export const ListCard = ({ name, quantity, checked, onClickItem }) => {
+export const ListCard = ({
+  name,
+  quantity,
+  checked,
+  onClickItem,
+  onCheckItem,
+}) => {
   return (
     <View
       style={{
@@ -11,6 +17,7 @@ export const ListCard = ({ name, quantity, checked, onClickItem }) => {
       }}
     >
       <TouchableOpacity
+        onPress={onCheckItem}
         style={{
           ...styles.checkedContainer,
           backgroundColor: checked ? colors.primary : colors.light,
