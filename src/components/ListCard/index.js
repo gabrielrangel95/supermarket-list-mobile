@@ -1,4 +1,5 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text } from '~/components/atoms/Text'
 import { px, colors } from '~/theme'
 import { Feather } from '@expo/vector-icons'
 
@@ -26,14 +27,9 @@ export const ListCard = ({
         {checked && <Feather name="check" size={px(16)} color={colors.white} />}
       </TouchableOpacity>
       <View style={styles.textView}>
-        <Text
-          style={{
-            ...styles.title,
-            color: checked ? colors.primary : colors.textColorDark,
-          }}
-        >
+        <Text.CardTitle color={checked ? 'primary' : 'textColorDark'}>
           {name}
-        </Text>
+        </Text.CardTitle>
         <Text>{quantity} unidades</Text>
       </View>
       <TouchableOpacity onPress={onClickItem} style={styles.clickView}>
@@ -72,11 +68,6 @@ const styles = StyleSheet.create({
   },
   textView: {
     width: '82%',
-  },
-  title: {
-    fontSize: px(16),
-    color: colors.primary,
-    fontWeight: '600',
   },
   clickView: {
     height: '100%',

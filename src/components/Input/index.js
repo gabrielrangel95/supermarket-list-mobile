@@ -1,4 +1,5 @@
-import { TextInput, View, Text, StyleSheet } from 'react-native'
+import { TextInput, View, StyleSheet } from 'react-native'
+import { Text } from '~/components/atoms/Text'
 import { colors, px } from '~/theme'
 
 export const Input = ({
@@ -10,7 +11,7 @@ export const Input = ({
 }) => {
   return (
     <View style={styles.inputContainer}>
-      <Text style={styles.label}>{label}</Text>
+      <Text.Label>{label}</Text.Label>
       <TextInput
         onChangeText={onChangeText}
         value={value}
@@ -35,10 +36,7 @@ const styles = StyleSheet.create({
     borderRadius: px(8),
     padding: px(6),
   },
-  label: {
-    fontSize: px(12),
-    fontWeight: '600',
-  },
+
   textInput: {
     fontSize: px(16),
     marginTop: px(4),

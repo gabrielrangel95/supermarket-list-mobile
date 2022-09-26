@@ -1,15 +1,8 @@
 import { useEffect, useState } from 'react'
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  Alert,
-} from 'react-native'
+import { SafeAreaView, View, StyleSheet, FlatList, Alert } from 'react-native'
 import { getData, USERNAME_DB_KEY, getItems, updateItem } from '~/services'
 import { colors, px } from '~/theme'
-import { ListCard, Button, Loader, FormModal } from '~/components'
+import { ListCard, Button, Loader, FormModal, Text } from '~/components'
 
 export const MarketListScreen = ({ navigation }) => {
   const [selectedItem, setSelectItem] = useState()
@@ -71,8 +64,8 @@ export const MarketListScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
       <View style={styles.headerContainer}>
-        <Text style={styles.title}>Olá, {username}!</Text>
-        <Text style={styles.description}>Sua lista de compras:</Text>
+        <Text.Title>Olá, {username}!</Text.Title>
+        <Text.Subtitle mt={8}>Sua lista de compras:</Text.Subtitle>
       </View>
       {loading && <Loader />}
       <FlatList
@@ -135,14 +128,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     padding: px(24),
   },
-  title: {
-    fontSize: px(24),
-    fontWeight: 'bold',
-  },
-  description: {
-    fontSize: px(16),
-    marginTop: px(8),
-  },
+
   buttonView: {
     width: '100%',
     display: 'flex',

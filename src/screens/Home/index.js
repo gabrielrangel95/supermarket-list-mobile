@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, View, Image, Text, Alert } from 'react-native'
-import { Button, Input } from '~/components'
+import { StyleSheet, View, Image, Alert } from 'react-native'
+import { Button, Input, Text } from '~/components'
 import { USERNAME_DB_KEY, saveData } from '~/services'
 import { px } from '~/theme'
 import homeImage from '../../../assets/shopping-bag.png'
@@ -27,15 +27,15 @@ export const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image resizeMode="contain" style={styles.homeImage} source={homeImage} />
-      <Text style={styles.title}>
+      <Text.Title style={styles.title}>
         Sua lista de supermercado mais fácil do que nunca
-      </Text>
-      <Text style={styles.subtitle}>
+      </Text.Title>
+      <Text.Subtitle mt={12}>
         Ajudamos você a organizar sua lista de compras de forma descomplicada.
-      </Text>
-      <Text style={styles.description}>
+      </Text.Subtitle>
+      <Text.Subtitle mt={36} mb={16} textAlign="left">
         Digite abaixo seu usuário para ter acesso a sua lista de compras:
-      </Text>
+      </Text.Subtitle>
       <Input
         value={username}
         onChangeText={setUsername}
@@ -62,22 +62,5 @@ const styles = StyleSheet.create({
   homeImage: {
     height: px(200),
     width: px(200),
-  },
-  title: {
-    fontSize: px(24),
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginTop: px(16),
-  },
-  subtitle: {
-    fontSize: px(16),
-    textAlign: 'center',
-    marginTop: px(12),
-  },
-  description: {
-    fontSize: px(16),
-    textAlign: 'left',
-    marginTop: px(36),
-    marginBottom: px(14),
   },
 })

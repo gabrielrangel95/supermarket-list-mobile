@@ -1,12 +1,6 @@
 import { useState, useEffect } from 'react'
-import {
-  Modal,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Alert,
-} from 'react-native'
+import { Modal, View, StyleSheet, TouchableOpacity, Alert } from 'react-native'
+import { Text } from '~/components/atoms/Text'
 import { EvilIcons } from '@expo/vector-icons'
 import { Button } from '../Button'
 import { Input } from '../Input'
@@ -85,9 +79,9 @@ export const FormModal = ({ visible, onClose, selectedItem }) => {
       <View style={styles.modalBackgroundView}>
         <View style={styles.modalContentContainer}>
           <View style={styles.headerContainer}>
-            <Text style={styles.title}>
+            <Text.ModalTitle>
               {selectedItem ? 'Editar item' : 'Adicionar novo item'}
-            </Text>
+            </Text.ModalTitle>
             <TouchableOpacity style={styles.closeContainer} onPress={onClose}>
               <EvilIcons name="close" size={px(24)} color={colors.primary} />
             </TouchableOpacity>
@@ -98,7 +92,9 @@ export const FormModal = ({ visible, onClose, selectedItem }) => {
             label="Nome"
             placeholder="Ex: Arroz"
           />
-          <Text style={styles.quantityLabel}>Quantitdade</Text>
+          <Text.Label mt={12} mb={12} width={358}>
+            Quantidade
+          </Text.Label>
           <View style={styles.quantityContainer}>
             <TouchableOpacity
               onPress={onIncreaseQuantity}
@@ -110,7 +106,9 @@ export const FormModal = ({ visible, onClose, selectedItem }) => {
                 color={colors.primary}
               />
             </TouchableOpacity>
-            <Text style={styles.quantityTitle}>{quantity}</Text>
+            <Text fontFamily="bold" fontSize={56}>
+              {quantity}
+            </Text>
             <TouchableOpacity
               disabled={quantity === 1}
               onPress={onDecreaseQuantity}
@@ -176,10 +174,6 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.grey,
     marginBottom: px(24),
   },
-  title: {
-    fontSize: px(20),
-    fontWeight: '500',
-  },
   closeContainer: {
     display: 'flex',
     alignItems: 'center',
@@ -187,14 +181,6 @@ const styles = StyleSheet.create({
     height: '100%',
     position: 'absolute',
     right: px(24),
-  },
-  quantityLabel: {
-    fontSize: px(12),
-    fontWeight: '600',
-    width: px(358),
-    textAlign: 'left',
-    marginTop: px(12),
-    marginBottom: px(12),
   },
   quantityContainer: {
     display: 'flex',
@@ -214,9 +200,5 @@ const styles = StyleSheet.create({
     backgroundColor: colors.light,
     borderWidth: px(1),
     borderColor: colors.primary,
-  },
-  quantityTitle: {
-    fontSize: px(56),
-    fontWeight: 'bold',
   },
 })
