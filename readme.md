@@ -4,21 +4,21 @@ This is an mobile app created with React Native (Expo) with the main goal of hel
 
 At the app the user can Create, Delete, Update and List all the supermarket list items, and if they ared "Checked" or not.
 
-# Technologies used
+## Technologies used
 
 - React Native (Expo)
 - Axios
 - Expo Icons
 - React Navigation
 
-# Requirements
+## Requirements
 
 - React Native setup (https://reactnative.dev/docs/environment-setup)
 - Node.js (https://nodejs.org/en/)
 - XCode (optional)
 - Android Studio
 
-# Steps to run the project:
+## Steps to run the project:
 
 1. Clone the project:
 
