@@ -1,5 +1,5 @@
 import { ActivityIndicator, View, StyleSheet } from "react-native";
-import { colors, px } from "../../theme";
+import { colors, px } from "~/theme";
 
 export const Loader = () => (
   <View style={styles.loaderContainer}>

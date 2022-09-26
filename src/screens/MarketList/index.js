@@ -7,11 +7,9 @@ import {
   FlatList,
   Alert,
 } from "react-native";
-import { USERNAME_DB_KEY } from "../../services/constants";
-import { getData } from "../../services/db";
-import { colors, px } from "../../theme";
-import { ListCard, Button, Loader, FormModal } from "../../components";
-import { getItems, updateItem } from "../../services/api/requests";
+import { getData, USERNAME_DB_KEY, getItems, updateItem } from "~/services";
+import { colors, px } from "~/theme";
+import { ListCard, Button, Loader, FormModal } from "~/components";
 
 export const MarketListScreen = ({ navigation }) => {
   const [selectedItem, setSelectItem] = useState();

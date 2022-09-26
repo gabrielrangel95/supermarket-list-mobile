@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { HomeScreen, MarketListScreen } from "../screens";
+import { HomeScreen, MarketListScreen } from "~/screens";
 
 const Stack = createNativeStackNavigator();
 

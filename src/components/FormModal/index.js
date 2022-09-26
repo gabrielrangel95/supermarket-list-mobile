@@ -10,8 +10,8 @@ import {
 import { EvilIcons } from "@expo/vector-icons";
 import { Button } from "../Button";
 import { Input } from "../Input";
-import { colors, px } from "../../theme";
-import { addItem, updateItem, deleteItem } from "../../services/api/requests";
+import { colors, px } from "~/theme";
+import { addItem, updateItem, deleteItem } from "~/services";
 
 export const FormModal = ({ visible, onClose, selectedItem }) => {
   const [name, setName] = useState("");

@@ -1,6 +1,6 @@
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
-import { colors, px } from "../../theme";
+import { colors, px } from "~/theme";
 
 const handleVariant = (variant) => {
   if (variant === "outline") {

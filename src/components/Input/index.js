@@ -1,5 +1,5 @@
 import { TextInput, View, Text, StyleSheet } from "react-native";
-import { colors, px } from "../../theme";
+import { colors, px } from "~/theme";
 
 export const Input = ({
   label,

@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { px, colors } from "../../theme";
+import { px, colors } from "~/theme";
 import { Feather } from "@expo/vector-icons";
 
 export const ListCard = ({
