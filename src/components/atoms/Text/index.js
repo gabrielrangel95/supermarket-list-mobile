@@ -1,4 +1,5 @@
 import { BaseText } from './styled'
+import PropTypes from 'prop-types'
 
 export const Text = ({ children, ...props }) => (
   <BaseText {...props}>{children}</BaseText>
@@ -33,3 +34,18 @@ Text.Label = ({ children, ...props }) => (
     {children}
   </BaseText>
 )
+
+Text.propTypes = {
+  fontSize: PropTypes.number,
+  fontFamily: PropTypes.oneOf(['regular', 'medium', 'bold', 'demiBold']),
+  width: PropTypes.number,
+  color: PropTypes.string,
+  textAlign: PropTypes.string,
+  mt: PropTypes.number,
+  mb: PropTypes.number,
+  children: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.node,
+  ]).isRequired,
+}

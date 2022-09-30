@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, View, Image, Alert } from 'react-native'
-import { Button, Input, Text } from '~/components'
+import { Alert } from 'react-native'
+import { Button, Input, Text, Box } from '~/components'
 import { USERNAME_DB_KEY, saveData } from '~/services'
-import { px } from '~/theme'
-import homeImage from '../../../assets/shopping-bag.png'
+import { Image } from './styles'
 
 export const HomeScreen = ({ navigation }) => {
   const [username, setUsername] = useState('')
@@ -25,9 +24,9 @@ export const HomeScreen = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.container}>
-      <Image resizeMode="contain" style={styles.homeImage} source={homeImage} />
-      <Text.Title style={styles.title}>
+    <Box bg="white" p={16} align="center" justify="center">
+      <Image resizeMode="contain" />
+      <Text.Title mt={16}>
         Sua lista de supermercado mais fácil do que nunca
       </Text.Title>
       <Text.Subtitle mt={12}>
@@ -47,20 +46,6 @@ export const HomeScreen = ({ navigation }) => {
         Avançar
       </Button>
       <StatusBar style="auto" />
-    </View>
+    </Box>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: px(16),
-  },
-  homeImage: {
-    height: px(200),
-    width: px(200),
-  },
-})
